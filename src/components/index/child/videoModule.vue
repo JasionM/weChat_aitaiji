@@ -15,7 +15,7 @@
 					</div>
 				</div>
 				<div class="video_swipe">
-					<swiper :options="swiperOption" ref="mySwiper">
+					<swiper :options="swiperOption" ref="mySwiper" v-show="false">
 						<swiper-slide>
 							<div class="img_panel">
 								<div class="panel_popup"></div>
@@ -39,6 +39,7 @@
 					  	<div class="swiper-button-next" slot="button-next"></div>
 					  	<div class="swiper-scrollbar"  slot="scrollbar"></div>
 					</swiper>
+					<videoSwiper></videoSwiper>
 				</div>
 				<div class="bottom">
 					<button type="button">进入视频区</button>
@@ -48,6 +49,7 @@
 	</div>
 </template>
 <script>
+	import videoSwiper from "./videoSwiper.vue";
 	export default {
 	  	name: '',
 	  	data () {
@@ -69,7 +71,7 @@
 		    }
 		},
 		components: {
-
+			videoSwiper
 		},
 		computed: {
 			swiper() {
