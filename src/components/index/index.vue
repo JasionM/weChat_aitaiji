@@ -2,11 +2,15 @@
 	<div id="index">
 		<welcome></welcome>
 		<videoModule></videoModule>
+		<appIntro></appIntro>
+		<bottomInfo></bottomInfo>
 	</div>
 </template>
 <script>
 	import welcome from "./child/welcome";
 	import videoModule from "./child/videoModule";
+	import appIntro from "./child/appIntro.vue";
+	import bottomInfo from "./child/bottomInfo.vue";
 	export default {
 	  	name: '',
 	  	data () {
@@ -17,7 +21,9 @@
 		},
 		components: {
 			welcome,
-			videoModule
+			videoModule,
+			appIntro,
+			bottomInfo
 		},
 		mounted: function () {
 

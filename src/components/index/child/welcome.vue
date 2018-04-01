@@ -49,13 +49,6 @@
 		h3,p{
 			margin: 0;
 		}
-		h3{
-			opacity: .8;
-			
-		}
-		p{
-			opacity: .7;
-		}
 		img.bg_pic{
 			position: absolute;
 			left: 50%;
