@@ -17,6 +17,10 @@ export default new Router({
 			path: '/videoGroup',
 	      	name: 'videoGroup',
 	      	component: resolve => require(['@/components/videoGroup'], resolve)
+	    }, {
+			path: '/about',
+	      	name: 'about',
+	      	component: resolve => require(['@/components/info/about.vue'], resolve)
 	    }
   	]
 })

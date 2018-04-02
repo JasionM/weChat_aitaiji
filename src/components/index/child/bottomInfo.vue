@@ -7,9 +7,9 @@
 					<button type="button" class="text" @click="goTop">返回顶部</button>
 				</div>
 				<div class="btn_list">
-					<button type="button">隐私条款</button>
-					<button type="button">服务条款</button>
-					<button type="button">关于我们</button>
+					<button type="button" @click="goTo('privacy')">隐私条款</button>
+					<button type="button" @click="goTo('service')">服务条款</button>
+					<button type="button" @click="goTo('about')">关于我们</button>
 				</div>
 				<div class="bottom_info">
 					<img src="./../../../assets/aitaichi.png">
@@ -30,6 +30,7 @@
 			
 		},
 		created: function () {
+			
 		},
 		mounted: function () {
 
@@ -39,6 +40,9 @@
 				$("html,body").animate({
 					scrollTop: 0+"px"
 				}, 300)
+			},
+			goTo(router){
+				this.$router.push({name: router});
 			}
 		}
 	}
