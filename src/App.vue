@@ -10,10 +10,11 @@ export default {
 }
 </script>
 
-<style>
+<style type="text/css" lang="less">
 #app {
-  font-family: 'Microsoft YaHei';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  	font-family: 'Microsoft YaHei';
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+  	
 }
 </style>

@@ -18,11 +18,11 @@
 					<videoSwiper></videoSwiper>
 				</div>
 				<div class="bottom">
-					<button type="button">进入视频区</button>
+					<button type="button" @click="gotoVideoGroup">进入视频区</button>
 				</div>
 			</div>
 		</div>
-		<transition name="fade" mode="out-in" appear>
+		<transition name="fade">
 			<videoPlayPage :url="url" :poster="poster" v-if="showPlay"></videoPlayPage>
 		</transition>
 	</div>
@@ -64,6 +64,11 @@
 				this.url = url;
 				this.poster = poster;
 				this.showPlay = true;
+			},
+			gotoVideoGroup(){
+				this.$router.push({
+					name: "videoGroup"
+				})
 			}
 		}
 	}
@@ -81,6 +86,12 @@
 			margin-top: -556px;
 			left: 50%;
 			margin-left: -960px;
+		}
+		.fade-enter-active, .fade-leave-active {
+		  	transition: opacity .5s;
+		}
+		.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+		  opacity: 0;
 		}
 		div.container{
 			position: absolute;
