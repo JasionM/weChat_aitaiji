@@ -1,43 +1,49 @@
 <template>
 	<div id="videoGroupContent">
-		<nav class="video_kind_list">
-			<ul>
-				<li class="hover">
-					<img src="./../../../assets/video_1.png" class="video_kind_img">
-					<div class="panel">
-						<h3>我是标题</h3>
+		<div class="videoGroupContent_main">
+			<nav class="video_main" v-for="videoGroup in data">
+				<div class="video_title">
+					<div class="video_popup">
+						<h3>{{videoGroup.gradename}}</h3>
 					</div>
-				</li>
-				<li>
-					<img src="./../../../assets/video_2.png" class="video_kind_img">
-					<div class="panel">
-						<h3>我是标题</h3>
-					</div>
-				</li>
-				<li>
-					<img src="./../../../assets/video_3.png" class="video_kind_img">
-					<div class="panel">
-						<h3>我是标题</h3>
-					</div>
-				</li>
-			</ul>
-		</nav>
-		<nav class="video_main">
-			<ul>
-				<li></li>
-			</ul>
-		</nav>
+					<img :src="videoGroup.groupingurl">
+				</div>
+				<ul class="video_list">
+					<li v-for="video in videoGroup.videoList" @click="openVideo(video)">
+						<div class="video_panel">
+							<h3>{{video.name}}</h3>
+							<img src="./../../../assets/icon_play.png">
+							<div class="info">
+								<span class="left">{{dateFormatter(video.duration)}}</span>
+								<!-- <span class="right">123次播放</span> -->
+							</div>
+						</div>
+						<img :src="video.background" class="video_bg">
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<transition name="fade">
+			<videoPlayPage :url="video.url" :poster="video.background" :title="video.name" v-if="showPlay"></videoPlayPage>
+		</transition>
 	</div>
 </template>
 <script type="text/javascript">
+	import videoPlayPage from "./../../public/videoPlayPage.vue";
 	export default {
+		props: ["data"],
 		data () {
 			return {
-				baseWidth: 200
+				baseWidth: 267,
+				showPlay: false,
+				video: {
+					url: "https://itaichi-production.oss-cn-beijing.aliyuncs.com/itaichi_video/oss_G00005.mp4",
+					poster: "",
+				}
 			}
 		},
 		components: {
-			
+			videoPlayPage
 		},
 		created: function () {
 
@@ -59,55 +65,142 @@
 						})
 					})
 				}, 100);
+			},
+			openVideo(video){
+				this.showPlay = true;
+				this.video = video;
+				this.$parent.stopVideo();
+			},
+			close(){
+				this.showPlay = false;
+			},
+			playVideo(){
+				this.$parent.playVideo();
+			},
+			dateFormatter(time){
+				let date = new Date(time * 1000);
+
+				let minute = date.getMinutes() >= 10 ? date.getMinutes() : "0"
+							+ date.getMinutes();
+				let second = date.getSeconds() >= 10 ? date.getSeconds() : "0"
+							+ date.getSeconds();
+
+				return minute + ":" + second;
 			}
 		}
 	}
 </script>
 <style type="text/css" lang="less">
 #videoGroupContent{
-	nav.video_kind_list{
-		width: 1200px;
-		background-color: #ddd;
-		margin: 0 auto;
-		overflow: hidden;
-		overflow: auto;
-		ul{
+	overflow: hidden;
+	.fade-enter-active, .fade-leave-active {
+	  	transition: opacity .5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	  opacity: 0;
+	}
+	div.videoGroupContent_main{
+		margin-top: 136px;
+		nav.video_main{
+			width: 1200px;
+			margin: 0 auto 50px;
 			overflow: hidden;
-			margin: 0 auto;
-			display: table;
-			padding: 0;
-			li{
-				position: relative;
-				overflow: hidden;
+			div.video_title,ul.video_list{
 				float: left;
 				display: inline-block;
-				width: 200px;
-				height: 300px;
-				cursor: pointer;
-				img{
-					position: absolute;
-					left: 50%;
-					height: 100%;
-					z-index: 1;
-				}
-				div.panel{
+			}
+			div.video_title{
+				width: 240px;
+				height: 410px;
+				position: relative;
+				overflow: hidden;
+				img,div.video_popup{
 					position: absolute;
 					left: 0;
 					top: 0;
+				}
+				img{
+					height: 100%;
+					width: 100%;
+					z-index: 0;
+				}
+				div.video_popup{
+					z-index: 1;
+					background-color: rgba(0,0,0,.5);
 					width: 100%;
 					height: 100%;
-					background-color: rgba(0,0,0,0);
-					z-index: 2;
-					padding: 10px;
-					transition: all .3s ease 0s;
 					h3{
 						color: #fff;
+						font-size: 22px;
+						font-weight: 400;
 						margin: 0;
+						padding: 15px;
 					}
 				}
-				&:hover,&.hover{
-					div.panel{
-						background-color: rgba(0,0,0,.5);
+			}
+			ul.video_list{
+				padding: 0;
+				width: 960px;
+				margin: 0;
+				li{
+					float: left;
+					list-style: none;
+					width: 310px;
+					height: 200px;
+					box-sizing: border-box;
+					overflow: hidden;
+					position: relative;
+					background-color: #fff;
+					padding: 10px;
+					margin-left: 10px;
+					margin-bottom: 10px;
+					cursor: pointer;
+					transition: all .5s ease 0s;
+					div.video_panel,img.video_bg{
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						transition: all .5s ease 0s;
+					}
+					div.video_panel{
+						background-color: rgba(0,0,0,.3);
+						z-index: 1;
+						color: #fff;
+						text-align: center;
+						h3{
+							margin: 0;
+							padding: 15px 20px;
+							font-size: 16px;
+							font-weight: 400;
+							text-align: left;
+						}
+						img{
+							margin: 32px;
+						}
+						div.info{
+							text-align: left;
+							padding: 0 20px;
+							span.left{
+								float: left;
+							}
+							span.right{
+								float: right;
+							}
+						}
+					}
+					img.video_bg{
+						z-index: 0;
+					}
+					&:hover{
+						box-shadow: 0 0 5px #000;
+						div.video_panel{
+							background-color: rgba( 0, 0, 0, .7);
+						}
+						img.video_bg{
+							transform: scale(1.1);
+						}
 					}
 				}
 			}

@@ -1,8 +1,8 @@
 <template>
 	<div id="index">
 		<welcome></welcome>
-		<videoModule></videoModule>
-		<appIntro></appIntro>
+		<videoModule v-if="videoList.length >= 1" :videoList="videoList"></videoModule>
+		<appIntro v-if="data.app != undefined" :appInfo="data.app[0]"></appIntro>
 		<bottomInfo></bottomInfo>
 	</div>
 </template>
@@ -15,8 +15,10 @@
 	  	name: '',
 	  	data () {
 		    return {
-		    	
-
+		    	data: "",
+		    	videoList: [],
+		    	androidUrl: "",
+		    	iosUrl: "",
 		    }
 		},
 		components: {
@@ -29,12 +31,38 @@
 
 		},
 		created: function () {
-			console.log("created");
+			if ($(window).width() < 960) {
+				this.$router.push({
+					name: "h5"
+				})
+			}
 			this.init();
+			this.getDownloadUrl();
 		},
 		methods: {
 			init () {
-				console.log("init");
+				let url = Config.web + "home";
+				this.$http.get(url).then(res => {
+					let body = res.body;
+					if (body.result == 1) {
+						this.data = body;
+						this.videoList = body.video[0].video;
+					} else {
+						console.log("获取首页信息失败")
+					}
+				},(err) => {
+					console.log("获取首页信息失败", err.statusText);
+				})
+			},
+			getDownloadUrl(){
+				let url = Config.wap + "home";
+				this.$http.get(url).then(res => {
+					let body = res.body;
+					if (body.result == 1) {
+						this.androidUrl = body.androidurl;
+						this.iosUrl = body.iosurl;
+					}
+				})
 			}
 		}
 	}

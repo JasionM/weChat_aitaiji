@@ -4,7 +4,7 @@
 			<div class="videoPlayPage_popup" @click="close"></div>
 			<div class="videoPlayPage_main">
 				<div class="headInfo">
-					<span class="title"></span>
+					<span class="title">{{title}}</span>
 					<span class="close_icon" @click="close">&times;</span>
 				</div>
 				<video autoplay="autoplay" controls="controls" :poster="poster">
@@ -17,7 +17,7 @@
 </template>
 <script type="text/javascript">
 	export default {
-		props: ["url","poster"],
+		props: ["url","poster", "title"],
 		data () {
 			return {
 				
@@ -30,10 +30,16 @@
 		},
 		mounted: function () {
 			$("#videoPlayPage").height($(window).height());
+			$(window).resize(() => {
+				$("#videoPlayPage").height($(window).height());
+			})
 		},
 		methods: {
 			close(){
-				this.$parent.showPlay = false;
+				if (this.$parent.playVideo !== undefined) {
+					this.$parent.playVideo();
+				}
+				this.$parent.close();
 			}
 		}
 	}
@@ -55,11 +61,11 @@
 		background-color: rgba(0,0,0,.8);
 	}
 	div.videoPlayPage_main{
-		width: 800px;
+		width: 60%;
 		position: absolute;
 		top: 15%;
-		left: 50%;
-		margin-left: -400px;
+		left: 20%;
+		// margin-left: -400px;
 		div.headInfo{
 			position: absolute;
 			opacity: 0;
@@ -67,12 +73,16 @@
 			height: 50px;
 			background-color: rgba(0,0,0,.8);
 			top: 0;
-			left: 50%;
-			margin-left: -400px;
+			left: 0;
+			// margin-left: -400px;
 			transition: all .3s ease 0s;
 			z-index: 1;
 			span.title{
 				float: left;
+				color: #fff;
+				line-height: 50px;
+				font-size: 18px;
+				margin-left: 10px;
 			}
 			span.close_icon{
 				float: right;

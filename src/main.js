@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueResource from "vue-resource"
 
 Vue.config.productionTip = false
 import './config.js'
 import $ from 'jquery'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 
+Vue.use(VueResource);
 Vue.use(VueAwesomeSwiper);
 import 'swiper/dist/css/swiper.css'
 /* eslint-disable no-new */

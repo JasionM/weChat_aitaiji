@@ -11,8 +11,8 @@
 						<p>加入我们 随时随地练太极</p>
 					</div>
 					<div class="right">
-						<img src="./../../../assets/android.png">
-						<img src="./../../../assets/ios.png">
+						<img src="./../../../assets/android.png" @click="download($parent.androidUrl)">
+						<img src="./../../../assets/ios.png" @click="download($parent.iosUrl)">
 					</div>
 				</div>
 			</div>
@@ -28,16 +28,16 @@
 		    }
 		},
 		mounted: function () {
-			console.log("mounted");
 			$("#welcome").height($(window).height());
 		},
 		created: function () {
-			console.log("created");
 			this.init();
 		},
 		methods: {
 			init () {
-				console.log("init");
+			},
+			download(url){
+				window.open(url);
 			}
 		}
 	}
@@ -92,6 +92,7 @@
 						float: right;
 						img{
 							margin-right: 22px;
+							cursor: pointer;
 						}
 					}
 				}

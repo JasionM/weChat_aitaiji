@@ -8,15 +8,17 @@
 let www = window.location.hostname;
 let api = "";
 let http_url = {};
-if (www == 'www.e-lotus.cn' || www == 'www.i-taichi.cn') {
-	api = 'http://api.i-taichi.cn';
+if (www == 'home.i-taichi.cn' || www == 'www.i-taichi.cn') {
+	api = 'http://app.i-taichi.cn';
 	http_url = {
-		home: api + '/home/'
+		web: api + '/web/',
+		wap: api + '/wap/'
 	}
 } else if (www == 'localhost') {
 	api = 'http://localhost:8081';
 	http_url = {
-		home: api + '/run/home/'
+		web: api + '/run/web/',
+		wap: api + '/run/wap/'
 	}
 }
 Config = http_url;

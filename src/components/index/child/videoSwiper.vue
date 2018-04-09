@@ -2,51 +2,39 @@
 	<div id="videoSwiper">
 		<div class="swiper_container">
 			<div class="swiper_panel">
-				<div class="swiper_item swiper_item_prev">
+				<div 
+					v-for="(video, index) in videoList" 
+					:class="{swiper_item: true,swiper_item_next:index == activeIndex + 1,swiper_item_prev:index == activeIndex - 1,swiper_item_active: index == activeIndex}">
 					<div class="swiper_item_panel">
-						<div class="play_icon"></div>
+						<div class="play_icon" @click="playVideo(video.url, video.poster, video.title)"></div>
 						<div class="swiper_popup"></div>
-						<img src="./../../../assets/video_1.png" height="517" width="776">
-					</div>
-				</div>
-				<div class="swiper_item swiper_item_active">
-					<div class="swiper_item_panel">
-						<div class="play_icon" @click="playVideo(url, poster)"></div>
-						<div class="swiper_popup"></div>
-						<img src="./../../../assets/video_2.png" height="517" width="776">
-					</div>
-				</div>
-				<div class="swiper_item swiper_item_next">
-					<div class="swiper_item_panel">
-						<div class="play_icon"></div>
-						<div class="swiper_popup"></div>
-						<img src="./../../../assets/video_3.png" height="517" width="776">
+						<img :src="video.poster" height="517" width="776">
 					</div>
 				</div>
 			</div>
 			<div class="swiper_prev" @click="clickPrev"></div>
 			<div class="swiper_next" @click="clickNext"></div>
 		</div>
-		
 	</div>
 </template>
 <script type="text/javascript">
-	import img from "./../../../assets/video_1.png";
 	export default {
+		props: ["videoList"],
 		data () {
 			return {
 				baseOffset: -174,
 				offset: 476,
 				currentOffset: -174,
 				control: false,
-				url: "http://img.gaozhaobang.com/video/howTouse/如何使用登录注册.mp4",
+				url: "",
 				poster: "",
+				activeIndex: 1,
 			}
 		},
 		components: {
 		},
 		created: function () {
-			this.poster = img;
+			this.activeIndex = this.$parent.startIndex;
 		},
 		mounted: function () {
 			$(".swiper_panel").width(476 * 3);
@@ -62,6 +50,9 @@
 					return;
 				}
 
+				this.activeIndex--;
+				this.$parent.getCurrentVideoInfo(this.activeIndex);
+
 				this.control = true;
 
 				this.currentOffset += this.offset;
@@ -70,23 +61,23 @@
 					"transform": "translate("+this.currentOffset+"px)",
 				});
 
-				if (prevMoreItem.length >= 1) {
-					prevMoreItem.addClass("swiper_item_prev");
-					prevMoreItem.find(".swiper_item_panel").css({
-						"float": "right"
-					})
-				}
+				// if (prevMoreItem.length >= 1) {
+				// 	prevMoreItem.addClass("swiper_item_prev");
+				// 	prevMoreItem.find(".swiper_item_panel").css({
+				// 		"float": "right"
+				// 	})
+				// }
 
-				prevItem.addClass("swiper_item_active");
-				prevItem.removeClass("swiper_item_prev");
+				// prevItem.addClass("swiper_item_active");
+				// prevItem.removeClass("swiper_item_prev");
 
-				activeItem.find(".swiper_item_panel").css({
-					"float": "left"
-				})
-				activeItem.addClass("swiper_item_next");
-				activeItem.removeClass("swiper_item_active");
+				// activeItem.find(".swiper_item_panel").css({
+				// 	"float": "left"
+				// })
+				// activeItem.addClass("swiper_item_next");
+				// activeItem.removeClass("swiper_item_active");
 
-				nextItem.removeClass("swiper_item_next");
+				// nextItem.removeClass("swiper_item_next");
 
 				setTimeout(() => {
 					this.control = false;
@@ -102,6 +93,9 @@
 					return;
 				}
 
+				this.activeIndex++;
+				this.$parent.getCurrentVideoInfo(this.activeIndex);
+
 				this.control = true;
 
 				this.currentOffset -= this.offset;
@@ -110,25 +104,25 @@
 					"transform": "translate("+this.currentOffset+"px)",
 				});
 
-				prevItem.removeClass("swiper_item_prev");
+				// prevItem.removeClass("swiper_item_prev");
 
-				activeItem.find(".swiper_item_panel").css({
-					"float": "right"
-				})
-				activeItem.addClass("swiper_item_prev");
-				activeItem.removeClass("swiper_item_active");
+				// activeItem.find(".swiper_item_panel").css({
+				// 	"float": "right"
+				// })
+				// activeItem.addClass("swiper_item_prev");
+				// activeItem.removeClass("swiper_item_active");
 
-				nextItem.addClass("swiper_item_active");
-				nextItem.removeClass("swiper_item_next");
+				// nextItem.addClass("swiper_item_active");
+				// nextItem.removeClass("swiper_item_next");
 
-				nextMoreItem.addClass("swiper_item_next");
+				// nextMoreItem.addClass("swiper_item_next");
 
 				setTimeout(() => {
 					this.control = false;
 				}, 300);
 			},
-			playVideo(url, poster){
-				this.$parent.playVideo(url, poster);
+			playVideo(url, poster, title){
+				this.$parent.playVideo(url, poster, title);
 			}
 		}
 	}

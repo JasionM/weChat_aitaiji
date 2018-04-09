@@ -6,16 +6,18 @@
 				<div class="top_info">
 					<div class="title">
 						<h3>首推视频</h3>
-						<h3>陈式太极八卦六十四掌</h3>
+						<h3>{{currentVideo.title}}</h3>
 					</div>
 					<div class="intro">
-						<p>陈式太极拳“四大金刚”之一的陈正雷老师独家授权并参与拍摄的教学视频库，由赏析视频，教学视频与动作库三部分组成</p>
+						<p v-for="info in currentVideo.content.split(';')">{{info}}</p>
+						<!-- <p>陈式太极拳“四大金刚”之一的陈正雷老师独家授权并参与拍摄的教学视频库，由赏析视频，教学视频与动作库三部分组成</p>
 						<p>并邀请陈正雷大师亲自示范</p>
-						<p>陈正雷大师若干弟子全程参与课程拍摄和文字整理，保证了教学视频的科学，系统及标准化</p>
+						<p>陈正雷大师若干弟子全程参与课程拍摄和文字整理，保证了教学视频的科学，系统及标准化</p> -->
+
 					</div>
 				</div>
 				<div class="video_swipe">
-					<videoSwiper></videoSwiper>
+					<videoSwiper :videoList="videoList"></videoSwiper>
 				</div>
 				<div class="bottom">
 					<button type="button" @click="gotoVideoGroup">进入视频区</button>
@@ -23,7 +25,7 @@
 			</div>
 		</div>
 		<transition name="fade">
-			<videoPlayPage :url="url" :poster="poster" v-if="showPlay"></videoPlayPage>
+			<videoPlayPage :url="url" :poster="poster" :title="title" v-if="showVideoPlay"></videoPlayPage>
 		</transition>
 	</div>
 </template>
@@ -32,11 +34,15 @@
 	import videoSwiper from "./videoSwiper.vue";
 	export default {
 	  	name: '',
+	  	props: ["videoList"],
 	  	data () {
 		    return {
 				url: "",
 				poster: "",
-				showPlay: false
+				showVideoPlay: false,
+				currentVideo:{},
+				startIndex: 1,
+				title: "",
 		    }
 		},
 		components: {
@@ -55,20 +61,28 @@
 		created: function () {
 			console.log("created");
 			this.init();
+			this.getCurrentVideoInfo(this.startIndex);
 		},
 		methods: {
 			init () {
 				console.log("init");
 			},
-			playVideo(url,poster){
+			playVideo(url,poster, title){
 				this.url = url;
+				this.title = title;
 				this.poster = poster;
-				this.showPlay = true;
+				this.showVideoPlay = true;
 			},
 			gotoVideoGroup(){
 				this.$router.push({
 					name: "videoGroup"
 				})
+			},
+			getCurrentVideoInfo(index){
+				this.currentVideo = this.videoList[index];
+			},
+			close(){
+				this.showVideoPlay = false;
 			}
 		}
 	}

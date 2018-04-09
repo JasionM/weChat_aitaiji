@@ -6,20 +6,21 @@
 					<img src="./../../../assets/phone.png">
 				</div>
 				<div class="right">
-					<h3>爱太极APP</h3>
+					<h3>{{appInfo.title}}</h3>
 					<div class="part">
-						<p>是河南荷花科技有限公司打造的一款由</p>
-						<p>中国非物质文化遗产陈式太极拳传承人陈正雷老师独家授权的太极拳教学APP。</p>
+						<p v-for="info in appInfo.introduce.split('|')">{{info}}</p>
+						<!-- <p>中国非物质文化遗产陈式太极拳传承人陈正雷老师独家授权的太极拳教学APP。</p> -->
 					</div>
 					<div class="part">
-						<p>爱太极通过对陈氏太极拳精品化的课程展示，科学系统化的课程编排，</p>
-						<p>正宗正源，兼顾传承与发展。</p>
+						<p v-for="info in appInfo.updateinfo.split('|')">{{info}}</p>
+						<!-- <p>爱太极通过对陈氏太极拳精品化的课程展示，科学系统化的课程编排，</p>
+						<p>正宗正源，兼顾传承与发展。</p> -->
 					</div>
-					<div class="part">
+					<!-- <div class="part">
 						<p>实现对中华瑰宝陈氏太极拳的宣传与普及。</p>
-					</div>
+					</div> -->
 					<div class="btn_list">
-						<div class="btn" @mouseover="iosHover = true" @mouseout="iosHover = false">
+						<div class="btn" @mouseover="iosHover = true" @mouseout="iosHover = false" @click="download($parent.iosUrl)">
 							<img src="./../../../assets/apple_icon.png" v-if="!iosHover">
 							<img src="./../../../assets/apple_white_icon.png"v-if="iosHover">
 							<div class="info">
@@ -27,7 +28,7 @@
 								<h3>App Store</h3>
 							</div>
 						</div>
-						<div class="btn" @mouseover="androidHover = true" @mouseout="androidHover = false">
+						<div class="btn" @mouseover="androidHover = true" @mouseout="androidHover = false" @click="download($parent.androidUrl)">
 							<img src="./../../../assets/android_icon.png" v-if="!androidHover">
 							<img src="./../../../assets/android_white_icon.png" v-if="androidHover">
 							<div class="info">
@@ -43,6 +44,7 @@
 </template>
 <script type="text/javascript">
 	export default {
+		props: ["appInfo"],
 		data () {
 			return {
 				iosHover: false,
@@ -58,7 +60,9 @@
 
 		},
 		methods: {
-			
+			download(url){
+				window.open(url);
+			}
 		}
 	}
 </script>
