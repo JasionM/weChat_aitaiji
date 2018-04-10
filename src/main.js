@@ -10,6 +10,10 @@ import './config.js'
 import $ from 'jquery'
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 
+import VuePlyr from "vue-plyr";
+import "vue-plyr/dist/vue-plyr.css";
+
+Vue.use(VuePlyr);
 Vue.use(VueResource);
 Vue.use(VueAwesomeSwiper);
 import 'swiper/dist/css/swiper.css'

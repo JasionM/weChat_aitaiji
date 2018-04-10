@@ -14,11 +14,10 @@ if (www == 'home.i-taichi.cn' || www == 'www.i-taichi.cn') {
 		web: api + '/web/',
 		wap: api + '/wap/'
 	}
-} else if (www == 'localhost') {
-	api = 'http://localhost:8081';
+} else {
 	http_url = {
-		web: api + '/run/web/',
-		wap: api + '/run/wap/'
+		web: '/run/web/',
+		wap: '/run/wap/'
 	}
 }
 Config = http_url;

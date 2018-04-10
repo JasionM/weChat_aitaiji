@@ -13,9 +13,10 @@
 				</div>
 			</div>
 			<div class="content">
-				<video autoplay loop id="h5Video">
-					<source :src="videourl" type="video/mp4">
-				</video>
+				<plyr>
+					<video autoplay loop id="h5Video">
+					</video>
+				</plyr>
 			</div>
 			<div class="btn_list">
 				<img src="./../../assets/ios_download_normal.png" @click="download(iosUrl)">
@@ -66,6 +67,8 @@
 						let str = "<source src="+this.videourl+" type='video/mp4'>"
 						$("#h5Video").append(str);
 					}
+				}, (err) => {
+					console.log(err.status, err.statusText);
 				})
 			}
 		}
@@ -86,7 +89,7 @@
 			width: 100%;
 			height: 100%;
 			div.top_info{
-				padding: 4.15rem 2.0rem 0;
+				padding: 2.15rem 2.0rem 0;
 				margin-bottom: 3.0rem;
 				overflow: hidden;
 				div{
@@ -111,7 +114,7 @@
 							padding-top: 0.9rem;
 						}
 						h3{
-							font-size: 3.0rem;
+							font-size: 2.5rem;
 							width: 4.0rem;
 						}
 					}
@@ -119,7 +122,7 @@
 			}
 			div.content{
 				width: 100%;
-				margin-bottom: 4.5rem;
+				margin-bottom: 2.5rem;
 				video{
 					width: 86%;
 					display: block;
