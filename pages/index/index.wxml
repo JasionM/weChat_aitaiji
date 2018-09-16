@@ -1,0 +1,41 @@
+<!-- index.wxml -->
+<view class="container">
+    <view class="top_content">
+        <view class="username">
+            <text>Hi</text>
+            <view>{{userInfo.nickName}}</view>
+        </view>
+        <!-- <view class="user_data">
+        <view class="nav">
+            <view class="li">
+                <view class="name">连续登陆(天)</view>
+                <view class="data">70</view>
+            </view>
+            <view class="li">
+                <view class="name">消耗(千卡)</view>
+                <view class="data">8685</view>
+            </view>
+            <view class="li">
+                <view class="name">训练完成(次)</view>
+                <view class="data">45</view>
+            </view>
+        </view>
+    </view> -->
+    </view>
+    <view class="video_content">
+        <view class="video_kind_nav">
+            <view class="kind_li {{nowTab == 0?'active':''}}" data-tabIndex="0" bindtap="changeTab">
+                <text>训练视频</text>
+                <view class="line"></view>
+            </view>
+            <view class="kind_li {{nowTab == 1?'active':''}}" data-tabIndex="1" bindtap="changeTab">
+                <text>爱太极出品</text>
+                <view class="line"></view>
+            </view>
+        </view>
+        <view class='video_list'>
+		
+            <video-item wx:for="{{nowTab == 0?actVideos:aitaijiVideos}}" wx:for-item="video" wx:key="gradeid" video-info="{{video}}" video-type="{{nowTab}}"></video-item>
+        </view>
+    </view>
+</view>

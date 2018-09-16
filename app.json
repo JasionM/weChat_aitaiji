@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/dayVideos/dayVideos",
+    "pages/actLib/actLib",
+    "pages/videoPlay/videoPlay",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#313131",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#c6c5cc",
+    "selectedColor": "#584f60",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "练功房",
+        "iconPath": "images/tabBars/liangong.png",
+        "selectedIconPath": "images/tabBars/liangong_active.png"
+      },
+      {
+        "pagePath": "pages/actLib/actLib",
+        "text": "动作库",
+        "iconPath": "images/tabBars/dongzuo.png",
+        "selectedIconPath": "images/tabBars/dongzuo_active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我",
+        "iconPath": "images/tabBars/dangan.png",
+        "selectedIconPath": "images/tabBars/dangan_active.png"
+      }
+    ]
+  }
+}

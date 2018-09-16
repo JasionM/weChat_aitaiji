@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "video-item": "./videoItem/videoItem"
+  },
+  "navigationBarBackgroundColor": "#4dbb80",
+  "navigationBarTitleText": "每日一练"
+}

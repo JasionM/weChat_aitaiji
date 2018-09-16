@@ -1,0 +1,23 @@
+<!--pages/actLib/actLib.wxml-->
+<view class='container'>
+  <picker bindchange='changeFirstKind' value='{{firstKindIndex}}' range='{{firstKind.trickArray}}'>
+    <view class='picker_content'>
+      <text>{{firstKind.trickArray[firstKindIndex]}}</text>
+    </view>
+  </picker>
+  <!-- <picker bindchange='changeSecondKind' value='{{secondKindIndex}}' range='{{secondKindArray}}'>
+    <view class='picker_content'>
+      <text>{{secondKindArray[secondKindIndex]}}</text>
+    </view>
+  </picker> -->
+  <view class='desc'>
+    <!-- <text>前六式</text> -->
+  </view>
+  <view class='video_list'>
+    <view class='video_item' bind:tap="gotoPlay" data-videoId="{{item.actionname}}" wx:for="{{videoList}}">
+      <image class="img" mode='widthFix' src='{{item.actionimage}}' />
+      <text class="info">{{item.actionname}}</text>
+      <video wx:if="{{item}}" src="{{item.actionvideo}}" id="{{item.actionname}}" controls="{{true}}" style="display:{{videoStatus}}" bindfullscreenchange="screenChange"/>
+    </view>
+  </view>
+</view>

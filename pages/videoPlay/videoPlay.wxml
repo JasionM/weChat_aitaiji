@@ -1,0 +1,25 @@
+<!--pages/videoPlay/videoPlay.wxml-->
+<view class="container">
+    <video class="video_player"/>
+    <view class="video_info">
+        <view class="video_title">
+            <text class="text">5/19 起手式伸展</text>
+            <view class="right_imgs">
+                <image src="./../../images/icon/collection_icon.png" mode="widthFix"/>
+                <image src="./../../images/icon/feedback_icon.png" mode="widthFix"/>
+            </view>
+        </view>
+        <view class="tab_list">
+            <view class="tab_item active">动作介绍</view>
+            <view class="tab_item">联系要点</view>
+            <view class="tab_item">注意事项</view>
+        </view>
+        <view class="content">
+            <view class="content_list">
+                <view class="content_item"><text>爱太极官方网站视频版块，是由陈式太极拳“四大金刚”之一的陈正雷老师独家授权并参与拍摄的教学视频库</text></view>
+                <view class="content_item"><text>由赏析视频，教学视频与动作库三部分组成。</text></view>
+                <view class="content_item"><text>并邀请陈正雷大师亲自示范，陈正雷大师若干弟子全程参与课程拍摄和文字整理保证了教学视频的科学，系统及标准化</text></view>
+            </view>
+        </view>
+    </view>
+</view>

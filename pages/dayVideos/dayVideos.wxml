@@ -1,0 +1,29 @@
+<!--pages/dayVideos/dayVideos.wxml-->
+<view class="container">
+    <view class="top_content">
+        <view class="info_part left">
+            <view class="title">训练</view>
+            <view class="info">
+                <text class="data">{{partInfo.gradepartsum}}</text>节
+            </view>
+        </view>
+        <view class="info_part center">
+            <view class="title">共计</view>
+            <view class="info">
+                <text class="data">{{partInfo.gradetimesum}}</text>分钟
+            </view>
+        </view>
+        <view class="info_part right">
+            <view class="title">消耗</view>
+            <view class="info">
+                <text class="data">{{partInfo.gradecaloriessum}}</text>千卡
+            </view>
+        </view>
+    </view>
+    <view class="video_list">
+        <scroll-view class="video_scroll" scroll-y scroll-with-animation="{{true}}">
+            <view class="black_content"></view>
+            <video-item wx:for="{{dataArray}}" video-info="{{item}}" wx:key="gradeid"></video-item>
+        </scroll-view>
+    </view>
+</view>

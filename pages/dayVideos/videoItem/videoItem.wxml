@@ -1,0 +1,13 @@
+<!--pages/index/videoItem/videoItem.wxml-->
+<view class='container'>
+  <view class='content'>
+    <video class="videoPlayer" wx:if="{{videoInfo.url}}" src="{{videoInfo.url}}" id="{{videoInfo.coursename}}" controls bindfullscreenchange="screenChange" style="display:{{videoStatus}}" poster="{{videoInfo.coursebackgroundimage}}" objectFit="fill" bindpause="closeVideo"/>
+    <image class='bgImg' src="{{videoInfo.coursebackgroundimage}}" bind:tap="playVideo" mode='widthFix'></image>
+    <!-- <text class='hot'>已参加</text> -->
+    <view class='shadow_info'>
+      <text class='title'>{{videoInfo.coursename}}————{{videoInfo.duration}}分钟版</text>
+      <text class='desc'>{{videoInfo.burns}}千卡</text>
+    </view>
+  </view>
+  
+</view>

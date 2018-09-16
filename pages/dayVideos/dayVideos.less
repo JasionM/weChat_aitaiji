@@ -1,0 +1,47 @@
+.container{
+    padding-top: 0;
+    position: relative;
+    .top_content{
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 70rpx 5% 100rpx;
+        background-color: #4dbb80;
+        .info_part{
+            color: #fff;
+            width: 33%;
+            box-sizing: border-box;
+            display: inline-block;
+            font-size: 20rpx;
+            .title{
+                font-size: 20rpx;
+            }
+            .info{
+                .data{
+                    font-size: 40rpx;
+                    margin-right: 10rpx;
+                }
+            }
+            &.left{
+                text-align: left;
+            }
+            &.center{
+                text-align: center;
+            }
+            &.right{
+                text-align: right;
+            }
+        }
+    }
+    .video_list{
+        position: absolute;
+        .video_scroll{
+            position: relative;
+            height: 100vh;
+            width:100vw;
+            .black_content{
+                width: 100%;
+                height: 131rpx;
+            }
+        }
+    }
+}

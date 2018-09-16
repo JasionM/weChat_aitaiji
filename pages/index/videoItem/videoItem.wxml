@@ -1,0 +1,17 @@
+<!--pages/index/videoItem/videoItem.wxml-->
+<view class='container'>
+  <view class='content' bind:tap="gotoVideos" data-gradeid="{{videoInfo.gradeid}}" data-gradename="{{videoInfo.gradename}}" data-type="1">
+    <image class='bgImg' src='{{videoInfo.gradebackgroundimage}}' mode='widthFix'></image>
+    <text class='hot' wx:if="{{videoInfo.ispopular  == 1}}">热</text>
+    <text class='new' wx:if="{{videoInfo.isnew == 1}}">有更新</text>
+    <view class='shadow_info'>
+      <text class='title'>{{videoInfo.gradename}}</text>
+      <text class='desc'>每日太极必修课 爱太极·爱健康</text>
+    </view>
+  </view>
+  <view class='footer_info'>
+    <view class='left'>训练{{videoInfo.gradepartsum}}节</view>
+    <view class='center'>共计{{videoInfo.gradetimesum}}分</view>
+    <view class='right'>消耗{{videoInfo.gradecaloriessum}}千卡</view>
+  </view>
+</view>
