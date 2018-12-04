@@ -11,10 +11,18 @@
             width: 100%;
             border-radius: 10rpx;
         }
-        // .videoPlayer{
-        //     width: 100%;
-        //     height: 381rpx;
-        // }
+        .videoPlayer{
+            width:100%;
+            height:97%;
+            display:inline-block;
+            line-height:0;
+            overflow:hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index:0;
+            border-radius:10rpx;
+        }
         .hot{
             font-size: 20rpx;
             color: #fff;
@@ -35,6 +43,9 @@
             border-bottom-right-radius: 10rpx;
             box-sizing: border-box;
             background: linear-gradient( rgba(0,0,0,0), rgba(0,0,0,0.8));
+            transition: opacity 1s ease 0s;
+            border-top-left-radius:10rpx;
+            border-top-right-radius:10rpx;
             .title,.desc{
                 display: block;
                 color: #fff;

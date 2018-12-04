@@ -5,9 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    routerArray: ["", "", "./child/helps/helps", "", ""]
   },
-
+  goto(e){
+    let type = e.target.dataset.type;
+    wx.navigateTo({
+      url: this.data.routerArray[type],
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

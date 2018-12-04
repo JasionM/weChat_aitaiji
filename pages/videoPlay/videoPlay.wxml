@@ -1,7 +1,8 @@
 <!--pages/videoPlay/videoPlay.wxml-->
 <view class="container">
+    <icon type="cancel" color="#fff" class="close"/>
     <video class="video_player"/>
-    <view class="video_info">
+    <!-- <view class="video_info">
         <view class="video_title">
             <text class="text">5/19 起手式伸展</text>
             <view class="right_imgs">
@@ -21,5 +22,5 @@
                 <view class="content_item"><text>并邀请陈正雷大师亲自示范，陈正雷大师若干弟子全程参与课程拍摄和文字整理保证了教学视频的科学，系统及标准化</text></view>
             </view>
         </view>
-    </view>
+    </view> -->
 </view>

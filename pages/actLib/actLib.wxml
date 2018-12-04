@@ -14,10 +14,27 @@
     <!-- <text>前六式</text> -->
   </view>
   <view class='video_list'>
-    <view class='video_item' bind:tap="gotoPlay" data-videoId="{{item.actionname}}" wx:for="{{videoList}}">
-      <image class="img" mode='widthFix' src='{{item.actionimage}}' />
-      <text class="info">{{item.actionname}}</text>
-      <video wx:if="{{item}}" src="{{item.actionvideo}}" id="{{item.actionname}}" controls="{{true}}" style="display:{{videoStatus}}" bindfullscreenchange="screenChange"/>
+    <view 
+      class='video_item' 
+      wx:for="{{videoList}}" 
+      wx:key="aid">
+      
+      <view bind:tap="gotoPlay" data-videoId="{{item.aid}}" >
+        <image class="img" mode='widthFix' src='{{item.actionimage}}' />
+        <text class="info">{{item.actionname}}</text>
+      </view>
+      <!-- <video wx:if="{{item}}" src="{{item.actionvideo}}" id="{{item.actionname}}" controls="{{true}}" style="display:{{videoStatus}}" bindfullscreenchange="screenChange"/> -->
+
+      <video-player 
+        id="videoPlayer{{item.aid}}" 
+        video-url="{{item.actionvideo}}"
+        video-id="{{item.aid}}"
+        video-type="102"
+        video-name="{{item.actionname}}"
+        times="{{item.actiontime}}"
+        wx:if="{{showPlayer == item.aid}}" 
+        bind:control="closeVideo">
+      </video-player>
     </view>
   </view>
 </view>

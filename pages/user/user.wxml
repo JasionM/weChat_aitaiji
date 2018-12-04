@@ -1,10 +1,13 @@
 <!--pages/user/user.wxml-->
 <view class='container'>
+  <!-- <view class="tip">
+    功能开发中
+  </view> -->
   <view class='user_list'>
-    <view class='user_list_item'>个人信息</view>
-    <view class='user_list_item'>绑定手机</view>
-    <view class='user_list_item'>帮助与反馈</view>
-    <view class='user_list_item'>更新公告</view>
-    <view class='user_list_item'>关于</view>
+    <!-- <view class='user_list_item'>个人信息</view>
+    <view class='user_list_item'>绑定手机</view> -->
+    <view class='user_list_item' data-type="2" bindtap='goto'>帮助与反馈</view>
+    <!-- <view class='user_list_item'>更新公告</view>
+    <view class='user_list_item'>关于</view> -->
   </view>
 </view>

@@ -1,10 +1,20 @@
 <!-- index.wxml -->
 <view class="container">
     <view class="top_content">
-        <view class="username">
-            <text>Hi</text>
-            <view>{{userInfo.nickName}}</view>
+        <view class="card username">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <view class='name-text'>
+                <text>
+                    {{userInfo.nickName}}
+                </text>
+                <button class="editor" size="mini" bindtap="goUser">点击编辑</button>
+            </view>
+            <button type="primary" open-type="share" class="circle-btn">分享</button>
+            <!-- <view class="after"></view> -->
         </view>
+        <!-- <button class="card" open-type="share">分享
+            <view class="after"></view>
+        </button> -->
         <!-- <view class="user_data">
         <view class="nav">
             <view class="li">

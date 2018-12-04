@@ -91,7 +91,7 @@ Page({
           for (let i = 0; i < data.data[0].regiona.length; i++) {
             const item = data.data[0].regiona[i];
             if (item.gradeid == this.data.gradeid) {
-              item.gradetimesum = parseInt(item.gradetimesum / 60);
+              item.gradetimesum = item.gradetimesum == 0 ? 0:parseInt(item.gradetimesum / 60);
               this.setData({
                 partInfo: item,
                 dataArray: item.grade
@@ -99,9 +99,9 @@ Page({
             }
           }
         } else {
-          for (let i = 0; i < data.data[0].regiona.length; i++) {
+          for (let i = 0; i < data.data[0].regionb.length; i++) {
             const item = data.data[0].regionb[i];
-            item.gradetimesum = parseInt(item.gradetimesum / 60);
+            item.gradetimesum = item.gradetimesum == 0 ? 0:parseInt(item.gradetimesum / 60);
 
             if (item.gradeid == this.data.gradeid) {
               this.setData({

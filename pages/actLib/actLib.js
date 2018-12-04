@@ -16,7 +16,8 @@ Page({
     videoList: [],
     videoStatus: 'none',
     sourceList: [],
-    videoPlayer: ""
+    videoPlayer: "",
+    showPlayer: false
   },
   changeFirstKind(e){
     this.setData({
@@ -31,17 +32,25 @@ Page({
     this.data.currentSecondKind = this.data.secondKindArray[e.detail.value];
   },
   gotoPlay(e){
-    this.data.videoPlayer = wx.createVideoContext(e.currentTarget.dataset.videoid, this);
-    console.log(e.currentTarget.dataset)
-    this.setData({
-      videoStatus: 'block'
-    })
+    // this.data.videoPlayer = wx.createVideoContext(e.currentTarget.dataset.videoid, this);
+    // console.log(e.currentTarget.dataset)
+    // this.setData({
+    //   videoStatus: 'block'
+    // })
 
-    this.data.videoPlayer.requestFullScreen();
-    this.data.videoPlayer.play();
+    // this.data.videoPlayer.requestFullScreen();
+    // this.data.videoPlayer.play();
     // wx.navigateTo({
     //   url: "./../videoPlay/videoPlay"
     // });
+    this.setData({
+      showPlayer: e.currentTarget.dataset.videoid
+    })
+    let s = "#videoPlayer" + e.currentTarget.dataset.videoid
+    
+    this.videoPlayer = this.selectComponent(s);
+
+    this.videoPlayer.show();
   },
   screenChange(e) {
     console.log(e);
@@ -69,7 +78,7 @@ Page({
       header: 'application/x-www-form-urlencoded',
       success: (res)=>{
         wx.hideLoading();
-        console.log(res);
+        // console.log(res);
         let data = res.data.data[0];
         let trickArray = [];
         let trickIdArray = [];
@@ -102,6 +111,11 @@ Page({
       },
       fail: ()=>{}
     });
+  },
+  closeVideo() {
+    this.setData({
+      showPlayer: ""
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -160,10 +174,10 @@ Page({
     if (currentLength + 10 <= sourceLength) {
       getDataLength = currentLength + 10;
     } else {
-      getDataLength = sourceLength - currentLength;
+      getDataLength = sourceLength;
     }
 
-    for (let i = currentLength - 1; i < getDataLength; i++) {
+    for (let i = currentLength; i < getDataLength; i++) {
       const e = this.data.sourceList[i];
       tempArray.push(e);
     }

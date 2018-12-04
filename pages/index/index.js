@@ -29,10 +29,22 @@ Page({
 
    this.getVideoData();
   },
+  onShareAppMessage(res) {
+    return {
+      title: "爱太极",
+      path: "/page/index/index"
+    }
+  },
   changeTab(e){
     this.setData({
       nowTab: e.currentTarget.dataset.tabindex
     })
+  },
+  goUser(e) {
+    console.log('tag', '11')
+    wx.navigateTo({
+      url: './../user/user',
+    });
   },
   getVideoData(){
     wx.request({

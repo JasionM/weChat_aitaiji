@@ -1,13 +1,22 @@
 <!--pages/index/videoItem/videoItem.wxml-->
 <view class='container'>
   <view class='content'>
-    <video class="videoPlayer" wx:if="{{videoInfo.url}}" src="{{videoInfo.url}}" id="{{videoInfo.coursename}}" controls bindfullscreenchange="screenChange" style="display:{{videoStatus}}" poster="{{videoInfo.coursebackgroundimage}}" objectFit="fill" bindpause="closeVideo"/>
+    <!-- <video class="videoPlayer" wx:if="{{videoInfo.url}}" src="{{videoInfo.url}}" id="{{videoInfo.coursename}}" controls="true" bindfullscreenchange="screenChange" style="display:{{videoStatus}}" poster="{{videoInfo.coursebackgroundimage}}" objectFit="fill" bindpause="closeVideo" bindplay="closeInfo"/> -->
+    <video-player 
+      id="videoPlayer" 
+      video-url="{{videoInfo.url}}"
+      video-id="{{videoInfo.tcid}}"
+      video-type="101"
+      video-name="{{videoInfo.coursename}}"
+      times="{{videoInfo.sourceTime}}"
+      wx:if="{{showPlayer == videoInfo.coursename}}" 
+      bind:control="closeVideo">
+    </video-player>
     <image class='bgImg' src="{{videoInfo.coursebackgroundimage}}" bind:tap="playVideo" mode='widthFix'></image>
     <!-- <text class='hot'>已参加</text> -->
-    <view class='shadow_info'>
-      <text class='title'>{{videoInfo.coursename}}————{{videoInfo.duration}}分钟版</text>
+    <view class='shadow_info' style="opacity: {{opacity}}">
+      <text class='title'>{{videoInfo.coursename}}————{{videoInfo.duration}}</text>
       <text class='desc'>{{videoInfo.burns}}千卡</text>
     </view>
   </view>
-  
 </view>

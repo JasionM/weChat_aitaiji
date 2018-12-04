@@ -6,7 +6,8 @@
     "pages/dayVideos/dayVideos",
     "pages/actLib/actLib",
     "pages/videoPlay/videoPlay",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/user/child/helps/helps"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,8 +32,8 @@
         "selectedIconPath": "images/tabBars/dongzuo_active.png"
       },
       {
-        "pagePath": "pages/user/user",
-        "text": "我",
+        "pagePath": "pages/index/index",
+        "text": "数据积累",
         "iconPath": "images/tabBars/dangan.png",
         "selectedIconPath": "images/tabBars/dangan_active.png"
       }
