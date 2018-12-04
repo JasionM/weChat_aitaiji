@@ -1,0 +1,1 @@
+.container{position:fixed;z-index:10;top:0;left:0;height:100vh;width:100vw;background-color:rgba(0,0,0,0.8);opacity:0}.container .video-container{position:absolute;top:25%;left:0}.container .close{position:absolute;top:40rpx;right:40rpx}.container .video-title{margin-bottom:20rpx;display:block;color:#fff;padding-left:20rpx}.container .videoPlayer{width:100vw}

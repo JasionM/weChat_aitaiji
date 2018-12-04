@@ -1,0 +1,12 @@
+/* pages/user/child/helps/helps.wxss */
+image{
+  width: 75vw;
+  display: block;
+  margin: 0 auto 20rpx;
+}
+text{
+  display: block;
+  width: 70vw;
+  margin: 0 auto;
+  text-align: center;
+}

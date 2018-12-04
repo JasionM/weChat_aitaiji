@@ -1,0 +1,8 @@
+<!--components/videoPlayer.wxml-->
+<view class="container" animation="{{animationData}}">
+    <icon class="close" type="cancel" size="23" color="#fff" bindtap="hidden"/>
+    <view class='video-container'>
+      <text class='video-title'>{{videoName}}——{{showTimes}}</text>
+      <video class="videoPlayer" bindplay='replay' bindended="playEnd" autoplay src="{{videoUrl}}" style="height:{{height}}px"/>
+    </view>
+</view>
