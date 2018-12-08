@@ -190,7 +190,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    let pages =  getCurrentPages();
+    let currentPage =  pages[pages.length - 1].route;
+    let param = {
+      title: "",
+      path: "",
+      imageUrl: ""
+    }
+    if (res.from == 'button') {
+      param.title = "爱太极";
+      param.path = "/"+currentPage;
+    }
 
+    return param;
   }
 })

@@ -30,6 +30,7 @@ Page({
    this.getVideoData();
   },
   onShareAppMessage(res) {
+    console.log(res)
     return {
       title: "爱太极",
       path: "/page/index/index"

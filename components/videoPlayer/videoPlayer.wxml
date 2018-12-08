@@ -2,7 +2,11 @@
 <view class="container" animation="{{animationData}}">
     <icon class="close" type="cancel" size="23" color="#fff" bindtap="hidden"/>
     <view class='video-container'>
-      <text class='video-title'>{{videoName}}——{{showTimes}}</text>
+      <text class='video-title'>{{videoName}}——{{showTimes}}
+      </text>
+      <button class="share" data-name="{{videoName}}" data-id="{{videoId}}" open-type="share" type="primary">
+        <image class="icon" src="./../../images/icon/share_icon.png" mode="widthFix"></image>
+      </button>
       <video class="videoPlayer" bindplay='replay' bindended="playEnd" autoplay src="{{videoUrl}}" style="height:{{height}}px"/>
     </view>
 </view>

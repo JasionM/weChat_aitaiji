@@ -35,6 +35,8 @@ Component({
    * 组件的初始数据
    */
   ready(){
+    let pages =  getCurrentPages();
+    this.data.currentPage =  pages[pages.length - 1].route
     console.log("video ready")
     let animation = wx.createAnimation({
       duration: 0,
@@ -53,7 +55,8 @@ Component({
     height: "",
     playId: 0,
     hasFinish: false,
-    showTimes: ""
+    showTimes: "",
+    currentPage: ""
   },
 
   /**

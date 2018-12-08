@@ -13,19 +13,26 @@
             margin-bottom: 40rpx;
             position: relative;
             display: block;
+            height: 180rpx;
             width: 100%;
             border-radius: 0;
             .circle-btn{
                 display: inline-block;
                 float: right;
-                margin-top: 30rpx;
+                text-align: left;
                 border-radius: 50%;
-                width: 120rpx;
-                height: 120rpx;
+                width: 180rpx;
+                height: 180rpx;
                 line-height: 120rpx;
                 padding: 0;
-                margin-right: 15rpx;
                 font-size: 26rpx;
+                transform: translateX(50%);
+                .icon{
+                    margin-top: 50%;
+                    transform: translateY(-50%);
+                    margin-left: 25rpx;
+                    width: 60rpx;
+                }
             }
             &:last-child{
                 margin-bottom: 0;
@@ -46,14 +53,19 @@
             // }
         }
         .username{
+            position: relative;
             .name-text{
                 display: inline-block;
                 font-size: 33rpx;
-                vertical-align: top;
+                vertical-align: middle;
                 padding: 10rpx;
+                .tip{
+                    font-size: 26rpx;
+                    font-weight: bold;
+                    margin-bottom: 15rpx;
+                }
             }
             .editor{
-               
                 margin-top: 20rpx;
             }
             .userinfo-avatar {
@@ -61,6 +73,15 @@
                 height: 128rpx;
                 margin: 20rpx;
                 border-radius: 50%;
+                vertical-align: middle;
+            }
+            .icon{
+                width: 44rpx;
+            }
+            .icon-edit{
+                position: absolute;
+                bottom: 15rpx;
+                left: 120rpx;
             }
         }
         

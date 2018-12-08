@@ -29,6 +29,21 @@ Page({
 
     this.getVideoData();
   },
+  onShareAppMessage(res) {
+    let pages =  getCurrentPages();
+    let currentPage =  pages[pages.length - 1].route;
+    let param = {
+      title: "",
+      path: "",
+      imageUrl: ""
+    }
+    if (res.from == 'button') {
+      param.title = "爱太极";
+      param.path = "/"+currentPage;
+    }
+
+    return param;
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -69,13 +84,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
   getVideoData(){

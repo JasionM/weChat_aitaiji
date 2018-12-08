@@ -23,7 +23,7 @@
     <view class="video_list">
         <scroll-view class="video_scroll" scroll-y scroll-with-animation="{{true}}">
             <view class="black_content"></view>
-            <video-item wx:for="{{dataArray}}" video-info="{{item}}" wx:key="gradeid"></video-item>
+            <video-item wx:for="{{dataArray}}" video-info="{{item}}" wx:key="gradeid" id="{{item.tcid}}"></video-item>
         </scroll-view>
     </view>
 </view>

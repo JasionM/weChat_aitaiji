@@ -3,13 +3,17 @@
     <view class="top_content">
         <view class="card username">
             <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <image class="icon icon-edit" src="./../../images/icon/edit_icon.png" mode="widthFix" bindtap="goUser"></image>
             <view class='name-text'>
+                <text class="tip">欢迎，</text>
                 <text>
                     {{userInfo.nickName}}
                 </text>
-                <button class="editor" size="mini" bindtap="goUser">点击编辑</button>
+                <!-- <button class="editor" size="mini" bindtap="goUser">点击编辑</button> -->
             </view>
-            <button type="primary" open-type="share" class="circle-btn">分享</button>
+            <button type="primary" open-type="share" class="circle-btn">
+                <image class="icon" src="./../../images/icon/share_icon.png" mode="widthFix"></image>
+            </button>
             <!-- <view class="after"></view> -->
         </view>
         <!-- <button class="card" open-type="share">分享
